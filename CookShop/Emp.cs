@@ -4,23 +4,24 @@ namespace CookShop
 	public class Emp
 	{
 
-        private string fName;
-        private string lName;
-        private Role empRole;
-        private string empID;
-        private int empRate;
-        private DateTime bday;
+        public string FirstName;
+        public string LastName;
+        public string EmpRole;
+        public string EmpID;
+        public int EmpRate;
+        public DateTime BirthDay;
         
-        public Emp(string fn, string ln, Role er, int wg) //  construtor?
+        public Emp(string firstName, string lastName, string empRole, int wage) //  construtor?
 		{
-            fName = fn;
-            lName = ln;
-            empRole = er;
-            empRate = wg;
+            FirstName = firstName;
+            LastName = lastName;
+            EmpRole = empRole;
+            EmpRate = wage;
+            
         }
 
 
-        enum Dept
+        public enum Dept
         {
 			Sales,
 			Admin,
@@ -29,7 +30,7 @@ namespace CookShop
             IT
         }
 
-        private enum Role
+        public enum Role
         {
 			Manager,
 			Employee,
@@ -38,12 +39,13 @@ namespace CookShop
 
         public string GetempID()
         {
-            return fName.Substring(3) + lName.Substring(4);
+            return FirstName.Substring(3) + LastName.Substring(4);
         }
 
-		public void NewEmp()
+		public static void AddNewEmp()
 
         {
+            Emp emp = new Emp(firstName, LastName, empRole, wage);
 
             DateTime today = DateTime.UtcNow.Date;
             var num = today.ToString("dd");
@@ -53,12 +55,12 @@ namespace CookShop
             var lName = Console.ReadLine();
 
 
-            if (Enum.IsDefined(typeof(Role), empRole) == true ) 
-            {
-                Console.WriteLine($"Please enter a correct Role for {fName}");
-            }
+            //if (Enum.IsDefined(typeof(Role), EmpRole) == true ) 
+            //{
+            //    Console.WriteLine($"Please enter a correct Role for {fName}");
+            //}
 
-            Console.WriteLine($"Empid is {GetempID}+num");
+            //Console.WriteLine($"Empid is {GetempID}+num");
         }
 
 
